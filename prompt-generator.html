@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2487.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;title&gt;Генератор промптов&lt;/title&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h2&gt;Генератор промптов для MidJourney&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p&gt;Заполните поля ниже, чтобы сгенерировать промпт:&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;form id="prompt-form"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="conditions"&gt;Задаем условия:&lt;/label&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="conditions" name="conditions" placeholder="Например: Студийное фото, парное фото преподавателей информатики из России"&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="emotions"&gt;Перечисляем эмоции:&lt;/label&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="emotions" name="emotions" placeholder="Например: естественные эмоции, улыбаются"&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="characters"&gt;Задаем параметры персонажей на фото:&lt;/label&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;textarea id="characters" name="characters" rows="4" placeholder="Например: женщина стоит перед мужчиной, руки скрещены, мужчина 45 лет с легкой щетиной..."&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="rendering"&gt;Задаем параметры рендеринга:&lt;/label&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;textarea id="rendering" name="rendering" rows="3" placeholder="Например: реалистичное фото, текстура кожи выражена..."&gt;&lt;/textarea&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="year"&gt;Обозначаем год:&lt;/label&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="year" name="year" placeholder="Например: 2024"&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;label for="background"&gt;Задаем параметры фона:&lt;/label&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;input type="text" id="background" name="background" placeholder="Например: фон фиолетовое фотополотно хромакей"&gt;&lt;br&gt;&lt;br&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;button type="button" id="generate-button"&gt;Сгенерировать промпт&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/form&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h3&gt;Результат:&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;p id="result"&gt;&lt;/p&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>document.getElementById('generate-button').addEventListener('click', function () {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const conditions = document.getElementById('conditions').value || "Без условий";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const emotions = document.getElementById('emotions').value || "Без эмоций";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const characters = document.getElementById('characters').value || "Без описания персонажей";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const rendering = document.getElementById('rendering').value || "Без рендеринга";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const year = document.getElementById('year').value || "Без указания года";</p>
+<p class="p1"><span class="Apple-converted-space">      </span>const background = document.getElementById('background').value || "Без фона";</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">      </span>const prompt = `${conditions}, ${emotions}, ${characters}, ${rendering}, ${year} год, ${background}`;</p>
+<p class="p1"><span class="Apple-converted-space">      </span>document.getElementById('result').textContent = prompt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>});</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
